@@ -14,10 +14,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 const con = mysql.createConnection({
-  host: 'localhost',
+  host: 'svc.sel5.cloudtype.app',
+  port: 31695,
   user: 'root',
   password: '7640',
-  database: 'mysqlDB',
+  database: 'testdb',
 });
 
 con.connect(function (err) {
