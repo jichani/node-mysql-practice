@@ -3,6 +3,7 @@ const mysql = require("mysql");
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
 
@@ -14,11 +15,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 const con = mysql.createConnection({
-  host: 'svc.sel5.cloudtype.app',
-  port: 31695,
-  user: 'root',
-  password: '7640',
-  database: 'testdb',
+  host: process.env.DB_HOST,
+  port: parseInt(process.env.DB_PORT),
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 
 con.connect(function (err) {
