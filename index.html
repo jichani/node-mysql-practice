@@ -8,7 +8,29 @@
 </head>
 
 <body>
+  <form method="POST" action="/submit">
+    <input type="text" id="name" name="name"><br>
+    <input type="text" id="email" name="email"><br>
+    <button type="submit">제출하기</button>
+  </form>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("form").on("submit", function (event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+
+        var formData = $(this).serialize();
+
+        $.post('/submit', formData, function (data) {
+          alert('Data inserted successfully');
+          // Here you can also clear the form fields or update the page in some other way
+        }).fail(function () {
+          alert('An error occurred during the query');
+        });
+      });
+    });
+  </script>
 </body>
 
 </html>
